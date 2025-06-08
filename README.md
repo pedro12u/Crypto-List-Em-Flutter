@@ -1,19 +1,74 @@
-# Stateful Click Counter
+# 📱 Cripto Moedas App
 
-A new Flutter project created with FlutLab - https://flutlab.io
+Aplicativo Flutter para visualização de cotações e detalhes de criptomoedas, com dados atualizados da CoinMarketCap.
 
-## Getting Started
+## 🚀 Funcionalidades
 
-A few resources to get you started if this is your first Flutter project:
+- 📊 Listagem de criptomoedas com:
+  - Sigla
+  - Nome
+  - Cotação atual em **USD** e **BRL**
+- 📋 Detalhes da criptomoeda em `AlertDialog`:
+  - Nome, símbolo, data de adição
+  - Preço em USD e BRL
+  - Variação percentual nas últimas 24h
 
-- https://flutter.dev/docs/get-started/codelab
-- https://flutter.dev/docs/cookbook
+## 🧩 Tecnologias Utilizadas
 
-For help getting started with Flutter, view our
-https://flutter.dev/docs, which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter**
+- **Dart**
+- **Provider** (Gerenciamento de estado)
+- **HTTP** (Requisições REST)
+- **CoinMarketCap API** v1
+- **Intl** (Formatação de moeda e datas)
 
-## Getting Started: FlutLab - Flutter Online IDE
+## 🔐 API
 
-- How to use FlutLab? Please, view our https://flutlab.io/docs
-- Join the discussion and conversation on https://flutlab.io/residents
+Utiliza a API da [CoinMarketCap](https://coinmarketcap.com/api/) com uma chave de acesso gratuita.
+
+- Endpoint utilizado:
+https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest
+
+- Conversão configurada para: `USD` e `BRL`
+
+> ⚠️ Atenção: o plano gratuito da CoinMarketCap permite apenas **uma conversão por requisição**. Portanto, para mostrar múltiplas moedas, são necessárias chamadas com `convert=USD,BRL` ou ajustes no código com múltiplas requisições se necessário.
+
+---
+
+## 🛠️ Estrutura do Projeto
+
+```bash
+lib/
+├── core/
+│   ├── config/
+│   │   └── app_constants.dart
+│   └── failure/
+│       └── failure.dart
+├── data/
+│   └── models/
+│       └── crypto_currency_model.dart
+├── domain/
+│   ├── entities/
+│   │   └── crypto_currency.dart
+│   └── repositories/
+│       └── crypto_repository.dart
+├── presentation/
+│   ├── viewmodels/
+│   │   └── crypto_list_viewmodel.dart
+│   ├── pages/
+│   ├── widgets/
+│   │   ├── crypto_list_item.dart
+│   │   └── crypto_detail_dialog.dart
+├── utils/
+│   └── currency_formatter.dart
+main.dart
+```
+🧪 Como executar
+```bash
+flutter pub get
+flutter run
+```
+
+👨‍💻 Desenvolvedor
+Pedro Toscano
+
